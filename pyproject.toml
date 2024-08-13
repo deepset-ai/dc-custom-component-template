@@ -42,4 +42,25 @@ python = ["3.10", "3.11"]
 
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/organization_id-custom_component_id"]
+packages = ["src/custom-component"]
+
+[tool.hatch.envs.code-quality]
+python = "3.11"
+detached = true
+dependencies = [
+  "black==23.9.1",
+  "mypy==1.9.0",
+  "ruff==0.3.2",
+]
+
+[tool.hatch.envs.code-quality.scripts]
+all = "mypy src tests && black src tests && ruff --fix ."
+
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+disallow_incomplete_defs = true
+disallow_untyped_defs = true

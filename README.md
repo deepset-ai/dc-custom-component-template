@@ -8,7 +8,8 @@ This repository contains a template for creating custom components for your deep
 | File | Description |
 |------|-------------|
 | /src/custom_component/src.py | Template for creating custom components. Write your custom component here. |
-| /src/_about_.py | Your component version. deepset Cloud always uses the latest version. Bump the version every time you update your component before uploading it to deepset Cloud. |
+| /src/__about__.py | Your component version. deepset Cloud always uses the latest version. Bump the version every time you update your component before uploading it to deepset Cloud. |
+| /pyproject.toml | Information about this project. If needed, you can add your component's dependencies in this file in the `dependencies` section. |
 
 ### Documentation
 To learn more about custom components, see [Custom Components](https://docs.cloud.deepset.ai/v2.0/docs/custom-components).
@@ -32,7 +33,7 @@ You can reference this virtual environment in your IDE.
 1. Clone this repository
 2. Navigate to the `/src/custom_component/src.py` file.
 3. Implement your custom component following the template.
-4. Update the version in `/src/_about_.py`.
+4. Update the version in `/src/__about__.py`.
 5. Format your code (see the Formatting section). 
 6. Upload your component to deepset Cloud.
 

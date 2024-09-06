@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "organization_id-custom_component_id"
+name = "dc-custom-component"
 description = 'Custom Haystack component to be used with deepset Cloud'
 readme = "README.md"
 requires-python = ">=3.10,<3.13" # deepset cloud at the moment uses 3.10
@@ -35,14 +35,11 @@ dependencies = [
 dynamic = ["version"]
 
 [tool.hatch.version]
-path = "src/__about__.py"
+path = "dc_custom_component/__about__.py"
 
 [[tool.hatch.envs.all.matrix]]
 python = ["3.10", "3.11"]
 
-
-[tool.hatch.build.targets.wheel]
-packages = ["src/custom-component"]
 
 [tool.hatch.envs.code-quality]
 python = "3.11"
@@ -54,8 +51,7 @@ dependencies = [
 ]
 
 [tool.hatch.envs.code-quality.scripts]
-all = "mypy src tests && black src tests && ruff --fix ."
-
+all = "mypy dc_custom_component tests && black dc_custom_component tests && ruff --fix ."
 
 [tool.mypy]
 python_version = "3.11"

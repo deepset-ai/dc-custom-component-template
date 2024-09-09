@@ -7,7 +7,7 @@ This repository contains a template for creating custom components for your deep
 
 | File | Description |
 |------|-------------|
-| /src/custom_component/src.py | Template for creating custom components. Write your custom component here. |
+| `/src/custom_component/src.py` | Template for creating custom components. Write your custom component here. |
 | `/src/__about__.py` | Your component version. deepset Cloud always uses the latest version. Bump the version every time you update your component before uploading it to deepset Cloud. |
 | /pyproject.toml | Information about this project. If needed, you can add your component's dependencies in this file in the `dependencies` section. |
 

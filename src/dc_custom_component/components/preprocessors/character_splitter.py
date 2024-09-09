@@ -6,13 +6,13 @@ from haystack import Document, component
 @component
 class CharacterSplitter:
     """
-    A component for splitting the text by characters
+    A sample component for splitting the text by characters
 
     ### Usage example
 
     ```python
     from haystack import Document
-    from haystack.components.preprocessors import DocumentSplitter
+    from dc_custom_component.components.preprocessors.character_splitter import CharacterSplitter
 
     doc = Document(content="Moonlight shimmered softly, wolves howled nearby, night enveloped everything.")
 

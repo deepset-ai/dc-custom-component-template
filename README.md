@@ -1,51 +1,61 @@
 # dc-custom-component-template
-## A Template for Creating Custom Components in deepset Cloud
 
-This repository contains a template for creating custom components for your deepset Cloud pipelines. Components are pieces of Python code that perform specific tasks. The template will guide you through all the necessary elements your custom component must have.
+This repository contains a template for creating custom components for your deepset Cloud pipelines. Components are Python code snippets that perform specific tasks within your pipeline. This template will guide you through all the necessary elements your custom component must include.
 
-### Structure
+## Documentation
 
-| File | Description |
-|------|-------------|
-| `/src/custom_component/src.py` | Template for creating custom components. Write your custom component here. |
-| `/src/__about__.py` | Your component version. deepset Cloud always uses the latest version. Bump the version every time you update your component before uploading it to deepset Cloud. |
-| /pyproject.toml | Information about this project. If needed, you can add your component's dependencies in this file in the `dependencies` section. |
+For more information about custom components, please refer to our [Custom Components](https://docs.deepset.ai/docs/custom-components) documentation. For a step-by-step guide on creating custom components, see [Create a Custom Component](https://docs.deepset.ai/docs/create-a-custom-component).
 
-### Documentation
-To learn more about custom components, see [Custom Components](https://docs.cloud.deepset.ai/v2.0/docs/custom-components).
-For a step-by-step guide for creating custom components, see [Create a Custom Component](https://docs.cloud.deepset.ai/v2.0/docs/create-a-custom-component).
+## 1. Setting up your local dev environment
 
 ### Prerequisites
-Anything here? like min Python version? hatch package manager?
 
-### Installation
-We use `hatch` to manage our python packages. For instructions to install Hatch, see the following [Hatch Installation](https://hatch.pypa.io/latest/install). Once installed, you can create a virtual environment by running:
+- Python v3.10
+- `hatch` package manager
 
+### Hatch: A Python Package Manager
+
+We use `hatch` to manage our Python packages. Install it with pip:
+
+```bash
+pip install hatch
+```
+
+Once installed, create a virtual environment by running:
 
 ```bash
 hatch shell
 ```
 
-This installs all the necessary packages needed to create a custom component.
-You can reference this virtual environment in your IDE.
+This installs all necessary packages needed to create a custom component. You can reference this virtual environment in your IDE.
 
-### Upload your custom component
+For more information on hatch, please refer to the [official Hatch documentation](https://hatch.pypa.io/).
+
+## 2. Developing your custom component
+
+### Structure
+
+| File | Description |
+|------|-------------|
+| `/src/dc_custom_component/components` | Directory for creating custom components. You can logically group custom components in sub-directories. |
+| `/src/dc_custom_component/__about__.py` | Your custom components' version. deepset Cloud always uses the latest version. Bump the version every time you update your component before uploading it to deepset Cloud. |
+| `/pyproject.toml` | Information about the project. If needed, add your components' dependencies in this file in the `dependencies` section. |
+
+### Testing
+
+It's crucial to thoroughly test your custom component before uploading it to deepset Cloud. Consider adding unit tests and integration tests to ensure your component functions correctly within a pipeline. You can use Python's built-in `unittest` framework or third-party testing libraries like `pytest`.
+
+## 3. Uploading your custom component
+
 1. Clone this repository.
-2. Navigate to the `/src/custom_component/src.py` file.
-3. Implement your custom component following the template.
+2. Navigate to the `/src/dc_custom_component/components/` module.
+3. Implement your custom components following the samples.
 4. Update the version in `/src/__about__.py`.
-5. Format your code using the `hatch run code-quality:all` command. For details, see the Formatting section.
-6. Zip your project by running the following command from inside of this project: `zip -r ../custom_component.zip ./*` (on Linux and MacOS) or `Compress-Archive -Path .\* -DestinationPath ..\custom_component.zip -Force` (on Windows). This creates a zip file called `custom_component.zip` in the parent directory.
-6. Upload your zip file to deepset Cloud using the Import [Custom Components](https://docs.cloud.deepset.ai/reference/import_custom_components_api_v2_custom_components_post) endpoint.
+5. Format your code using the `hatch run code-quality:all` command.
+6. Zip your project by running the following command from inside of this project:
+   - On Linux and macOS: `hatch run dc:create-zip`
+   - On Windows: `hatch run dc:create-zip-windows`
+   This creates a zip file called `custom_component.zip` in the repository directory.
+7. Upload your zip file to deepset Cloud using the [Import Custom Components endpoint](https://api.cloud.deepset.ai/api/v1/#operation/import_custom_component).
 
-For detailed instructions, refer to our documentation on [Creating a Custom Component](https://docs.cloud.deepset.ai/v2.0/docs/create-a-custom-component).
-
-
-### Formatting
-We defined a suite of formatting tools. To format your code, run:
-
-```bash
-hatch run code-quality:all
-```
- ### Testing
- How is it tested? should add some info?
+For detailed instructions, refer to our documentation on [Creating a Custom Component](https://docs.deepset.ai/docs/create-a-custom-component).

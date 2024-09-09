@@ -48,4 +48,3 @@ hatch run code-quality:all
 ```
  ### Testing
  How is it tested? should add some info?
-

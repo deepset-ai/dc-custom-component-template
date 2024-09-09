@@ -47,7 +47,7 @@ It's crucial to thoroughly test your custom component before uploading it to dee
 
 ## 3. Uploading your custom component
 
-1. Clone this repository.
+1. Fork this repository.
 2. Navigate to the `/src/dc_custom_component/components/` module.
 3. Implement your custom components following the samples.
 4. Update the version in `/src/__about__.py`.

@@ -47,7 +47,7 @@ class CharacterSplitter:
             for i in range(0, len(text), self.split_length):
                 split_text = text[i : i + self.split_length]
                 split_doc = Document(
-                    text=split_text,
+                    content=split_text,
                     meta={
                         "source_id": doc.id,
                         "source_offsets": (i, i + len(split_text)),

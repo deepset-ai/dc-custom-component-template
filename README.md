@@ -50,7 +50,7 @@ It's crucial to thoroughly test your custom component before uploading it to dee
 1. Fork this repository.
 2. Navigate to the `/src/dc_custom_component/components/` folder.
 3. Add your custom components following the examples.
-4. Update the version in `/src/__about__.py`.
+4. Update the components' version in `/src/__about__.py`.
 5. Format your code using the `hatch run code-quality:all` command.
 6. Zip your project by running the following command from inside of this project:
    - On Linux and macOS: `hatch run dc:create-zip`

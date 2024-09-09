@@ -29,13 +29,14 @@ hatch shell
 This installs all the necessary packages needed to create a custom component.
 You can reference this virtual environment in your IDE.
 
-### Usage
-1. Clone this repository
+### Upload your custom component
+1. Clone this repository.
 2. Navigate to the `/src/custom_component/src.py` file.
 3. Implement your custom component following the template.
 4. Update the version in `/src/__about__.py`.
-5. Format your code (see the Formatting section). 
-6. Upload your component to deepset Cloud.
+5. Format your code using the `hatch run code-quality:all` command. For details, see the Formatting section.
+6. Zip your project by running the following command from inside of this project: `zip -r ../custom_component.zip ./*` (on Linux and MacOS) or `Compress-Archive -Path .\* -DestinationPath ..\custom_component.zip -Force` (on Windows). This creates a zip file called `custom_component.zip` in the parent directory.
+6. Upload your zip file to deepset Cloud using the Import [Custom Components](https://docs.cloud.deepset.ai/reference/import_custom_components_api_v2_custom_components_post) endpoint.
 
 For detailed instructions, refer to our documentation on [Creating a Custom Component](https://docs.cloud.deepset.ai/v2.0/docs/create-a-custom-component).
 

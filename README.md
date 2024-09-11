@@ -1,12 +1,17 @@
 # dc-custom-component-template
 
 This repository contains a template for creating custom components for your deepset Cloud pipelines. Components are Python code snippets that perform specific tasks within your pipeline. This template will guide you through all the necessary elements your custom component must include.
-In addition this repository contains two sample components which are ready to be used: 
-  - `CharacterSplitter` implemented in `/src/dc_custom_component/components/preprocessors/character_splitter.py` to be used in indexing pipelines
-  - `KeywordBooster` implemented in `/src/dc_custom_component/components/rankers/keyword_booster.py` to be used in query pipelines
+This template contains two sample components which are ready to be used: 
+  - `CharacterSplitter` implemented in `/src/dc_custom_component/components/preprocessors/character_splitter.py`: A component that splits documents into smaller chunks by the number of characters you set. You can use it in indexing pipelines.
+  - `KeywordBooster` implemented in `/src/dc_custom_component/components/rankers/keyword_booster.py`: A component that boosts the score of documents that contain specific keywords. You can use it in query pipelines.
+
+We've created these examples to help you understand how to structure your components. When importing your custom components to deepset Cloud, you can remove or rename the `preprocessors` and `rankers` folders with the sample components, if you're not planning to use them. 
+
+This template serves as a custom components library for your organization. Only the components present in the most recently uploaded template are available for use in your pipelines. 
 
 ## Documentation
-For more information about custom components, please refer to our [Custom Components](https://docs.deepset.ai/docs/custom-components) documentation. For a step-by-step guide on creating custom components, see [Create a Custom Component](https://docs.deepset.ai/docs/create-a-custom-component).
+For more information about custom components, see [Custom Components](https://docs.deepset.ai/docs/custom-components). 
+For a step-by-step guide on creating custom components, see [Create a Custom Component](https://docs.deepset.ai/docs/create-a-custom-component).
 
 ## 1. Setting up your local dev environment
 
@@ -31,7 +36,7 @@ hatch shell
 
 This installs all necessary packages needed to create a custom component. You can reference this virtual environment in your IDE.
 
-For more information on hatch, please refer to the [official Hatch documentation](https://hatch.pypa.io/).
+For more information on hatch, see [the official Hatch documentation](https://hatch.pypa.io/).
 
 ## 2. Developing your custom component
 
@@ -39,14 +44,23 @@ For more information on hatch, please refer to the [official Hatch documentation
 
 | File | Description |
 |------|-------------|
-| `/src/dc_custom_component/components` | Directory for implementing custom components. You can logically group custom components in sub-directories. E.g. see how sample components are grouped by type. |
+| `/src/dc_custom_component/components` | Directory for implementing custom components. You can logically group custom components in sub-directories. See how sample components are grouped by type. |
 | `/src/dc_custom_component/__about__.py` | Your custom components' version. deepset Cloud always uses the latest version. Bump the version every time you update your component before uploading it to deepset Cloud. |
 | `/pyproject.toml` | Information about the project. If needed, add your components' dependencies in this file in the `dependencies` section. |
 
-Note that the location of your custom component implementation defines the type name of your component to be used in pipeline YAML. E.g. our sample components have the following type names:
+Note that the location of your custom component implementation defines your component's `type` to be used in pipeline YAML. For example, the sample components have the following types because of their location:
   - `dc_custom_component.components.preprocessor.character_splitter.CharacterSplitter`
   - `dc_custom_component.components.rankers.keyword_booster.KeyWordBooster`
 
+Here is how you would add them to a pipeline:
+```yaml
+components:
+  splitter:
+    type: dc_custom_component.components.preprocessor.character_splitter.CharacterSplitter
+    init_parameters: {}
+  ...
+    
+```
 ### Formatting
 We defined a suite of formatting tools. To format your code, run:
 
@@ -72,6 +86,13 @@ It's crucial to thoroughly test your custom component before uploading it to dee
    - On Linux and macOS: `hatch run dc:create-zip`
    - On Windows: `hatch run dc:create-zip-windows`
    This creates a zip file called `custom_component.zip` in the repository directory.
-7. Upload your zip file to deepset Cloud using the [Import Custom Components endpoint](https://api.cloud.deepset.ai/api/v1/#operation/import_custom_component).
+7. Upload your zip file to deepset Cloud using the [Import Custom Components endpoint](https://api.cloud.deepset.ai/api/v1/#operation/import_custom_component). Here is a sample code you can use as a starting point for your request:
+```cURL
+curl --request POST \
+     --url https://api.cloud.deepset.ai/api/v2/custom_components \
+     --header 'accept: application/json' \
+     --header 'Authorization: Bearer api_XXX' \
+     --form 'file=@"/path/to/custom/component/custom_component.zip";type=application/zip'
+```
 
 For detailed instructions, refer to our documentation on [Creating a Custom Component](https://docs.deepset.ai/docs/create-a-custom-component).

@@ -65,13 +65,16 @@ It's crucial to thoroughly test your custom component before uploading it to dee
 
 1. Fork this repository.
 2. Navigate to the `/src/dc_custom_component/components/` folder.
-3. Add your custom components following the examples.
-4. Update the components' version in `/src/__about__.py`.
-5. Format your code using the `hatch run code-quality:all` command.
-6. Zip your project by running the following command from inside of this project:
-   - On Linux and macOS: `hatch run dc:create-zip`
-   - On Windows: `hatch run dc:create-zip-windows`
-   This creates a zip file called `custom_component.zip` in the repository directory.
-7. Upload your zip file to deepset Cloud using the [Import Custom Components endpoint](https://api.cloud.deepset.ai/api/v1/#operation/import_custom_component).
+3. Add your custom components following the examples under `/src/dc_custom_component/example_components/`.
+4. Delete example components under `/src/dc_custom_component/example_components/`.
+5. Update the components' version in `/src/__about__.py`.
+6. Format your code using the `hatch run code-quality:all` command. (hatch commands work from project root directory only)
+7. Set your [deepset Cloud API key](https://docs.cloud.deepset.ai/v2.0/docs/generate-api-key).
+   - On Linux and macOS: `export API_KEY=<TOKEN>`
+   - On Windows: `SET API_KEY=<TOKEN>`
+8. Upload your project by running the following command from inside of this project:
+   - On Linux and macOS: `hatch run dc:build-and-push`
+   - On Windows: `hatch run dc:build-and-push-windows`
+   This creates a zip file called `custom_component.zip` in the `dist` directory and uploads it to deepset Cloud.
 
 For detailed instructions, refer to our documentation on [Creating a Custom Component](https://docs.deepset.ai/docs/create-a-custom-component).

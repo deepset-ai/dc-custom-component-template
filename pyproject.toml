@@ -56,6 +56,9 @@ dependencies = [
   "ruff==0.3.2",
 ]
 
+[tool.hatch.build.targets.wheel]
+packages = ["src/dc_custom_component"]
+
 [tool.hatch.envs.code-quality.scripts]
 all = "mypy src tests && black src tests && ruff check --fix ."
 

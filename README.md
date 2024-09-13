@@ -19,9 +19,13 @@ For more information about custom components, please refer to our [Custom Compon
 
 We use `hatch` to manage our Python packages. Install it with pip:
 
+Linux and macOS:
 ```bash
 pip install hatch
 ```
+
+Windows:
+Follow the instructions under https://hatch.pypa.io/1.12/install/#windows
 
 Once installed, create a virtual environment by running:
 
@@ -74,7 +78,7 @@ It's crucial to thoroughly test your custom component before uploading it to dee
    - On Windows: `SET API_KEY=<TOKEN>`
 8. Upload your project by running the following command from inside of this project:
    - On Linux and macOS: `hatch run dc:build-and-push`
-   - On Windows: `hatch run dc:build-and-push-windows`
+   - On Windows: `hatch run dc:build-windows` and `hatch run dc:push-windows`
    This creates a zip file called `custom_component.zip` in the `dist` directory and uploads it to deepset Cloud.
 
 For detailed instructions, refer to our documentation on [Creating a Custom Component](https://docs.deepset.ai/docs/create-a-custom-component).

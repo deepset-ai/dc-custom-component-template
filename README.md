@@ -60,7 +60,7 @@ Here is how you would add them to a pipeline:
 ```yaml
 components:
   splitter:
-    type: dc_custom_component.components.preprocessor.character_splitter.CharacterSplitter
+    type: dc_custom_component.example_components.preprocessor.character_splitter.CharacterSplitter
     init_parameters: {}
   ...
     

@@ -38,9 +38,9 @@ Once installed, create a virtual environment by running:
 hatch shell
 ```
 
-This installs all necessary packages needed to create a custom component. You can reference this virtual environment in your IDE.
+This installs all the necessary packages needed to create a custom component. You can reference this virtual environment in your IDE.
 
-For more information on hatch, see [the official Hatch documentation](https://hatch.pypa.io/).
+For more information on `hatch`, please refer to the [official Hatch documentation](https://hatch.pypa.io/).
 
 ## 2. Developing your custom component
 
@@ -74,8 +74,8 @@ hatch run code-quality:all
 
 ### Testing
 
-It's crucial to thoroughly test your custom component before uploading it to deepset Cloud. Consider adding unit tests and integration tests to ensure your component functions correctly within a pipeline.
-- pytest is ready to be used with hatch
+It's crucial to thoroughly test your custom component before uploading it to deepset Cloud. Consider adding unit and integration tests to ensure your component functions correctly within a pipeline.
+- `pytest` is ready to be used with `hatch`
 - implement your tests under `/test`
 - run `hatch run tests`
 

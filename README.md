@@ -54,14 +54,14 @@ For more information on `hatch`, please refer to the [official Hatch documentati
 | `/pyproject.toml` | Information about the project. If needed, add your components' dependencies in this file in the `dependencies` section. |
 
 Note that the location of your custom component implementation defines your component's `type` to be used in pipeline YAML. For example, the sample components have the following types because of their location:
-  - `dc_custom_component.example_components.preprocessor.character_splitter.CharacterSplitter`
+  - `dc_custom_component.example_components.preprocessors.character_splitter.CharacterSplitter`
   - `dc_custom_component.example_components.rankers.keyword_booster.KeyWordBooster`
 
 Here is how you would add them to a pipeline:
 ```yaml
 components:
   splitter:
-    type: dc_custom_component.example_components.preprocessor.character_splitter.CharacterSplitter
+    type: dc_custom_component.example_components.preprocessors.character_splitter.CharacterSplitter
     init_parameters: {}
   ...
     

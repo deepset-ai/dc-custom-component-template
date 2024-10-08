@@ -10,8 +10,8 @@ We've created these examples to help you understand how to structure your compon
 This template serves as a custom components library for your organization. Only the components present in the most recently uploaded template are available for use in your pipelines. 
 
 ## Documentation
-For more information about custom components, see [Custom Components](https://docs.deepset.ai/docs/custom-components). 
-For a step-by-step guide on creating custom components, see [Create a Custom Component](https://docs.deepset.ai/docs/create-a-custom-component).
+For more information about custom components, see [Custom Components](https://docs.cloud.deepset.ai/docs/custom-components). 
+For a step-by-step guide on creating custom components, see [Create a Custom Component](https://docs.deepset.cloud.ai/docs/create-a-custom-component).
 
 ## 1. Setting up your local dev environment
 
@@ -86,7 +86,7 @@ It's crucial to thoroughly test your custom component before uploading it to dee
 3. Add your custom components following the examples.
 4. Update the components' version in `/src/__about__.py`.
 5. Format your code using the `hatch run code-quality:all` command. (Note that hatch commands work from the project root directory only.)
-6. Set your [deepset Cloud API key](https://docs.cloud.deepset.ai/v2.0/docs/generate-api-key).
+6. Set your [deepset Cloud API key](https://docs.cloud.deepset.ai/docs/generate-api-key).
    - On Linux and macOS: `export API_KEY=<TOKEN>`
    - On Windows: `set API_KEY=<TOKEN>`
 7. Upload your project by running the following command from inside of this project:
@@ -94,4 +94,4 @@ It's crucial to thoroughly test your custom component before uploading it to dee
    - On Windows: `hatch run dc:build-windows` and `hatch run dc:push-windows`
    This creates a zip file called `custom_component.zip` in the `dist` directory and uploads it to deepset Cloud.
 
-For detailed instructions, refer to our documentation on [Creating a Custom Component](https://docs.deepset.ai/docs/create-a-custom-component).
+For detailed instructions, refer to our documentation on [Creating a Custom Component](https://docs.cloud.deepset.ai/docs/create-a-custom-component).

@@ -11,7 +11,8 @@ This template serves as a custom components library for your organization. Only 
 
 ## Documentation
 For more information about custom components, see [Custom Components](https://docs.cloud.deepset.ai/docs/custom-components). 
-For a step-by-step guide on creating custom components, see [Create a Custom Component](https://docs.deepset.cloud.ai/docs/create-a-custom-component).
+For a step-by-step guide on creating custom components, see [Create a Custom Component](https://docs.cloud.deepset.ai/docs/create-a-custom-component).
+See also our tutorial for [creating a custom RegexBooster component](https://docs.cloud.deepset.ai/docs/tutorial-creating-a-custom-component).
 
 ## 1. Setting up your local dev environment
 

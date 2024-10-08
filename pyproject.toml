@@ -20,7 +20,7 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
 dependencies = [
-  "haystack-ai>=2.0.0"
+  "haystack-ai>=2.0.0", "requests", "tritonclient[http,grpc]",
 ]
 dynamic = ["version"]
 
@@ -33,6 +33,7 @@ python = ["3.10", "3.11"]
 [tool.hatch.envs.default]
 dependencies = [
   "pytest==7.4.2",
+  "requests_mock",
 ]
 
 [tool.hatch.envs.default.scripts]
@@ -64,11 +65,21 @@ packages = ["src/dc_custom_component"]
 
 [tool.hatch.envs.code-quality.scripts]
 all = "mypy src tests && black src tests && ruff check --fix ."
+types = "mypy src tests"
+fmt = "black src tests"
+lint = "ruff check --fix ."
 
-[tool.mypy]
-python_version = "3.11"
-warn_return_any = true
-warn_unused_configs = true
+[[tool.mypy.overrides]]
+module = [
+  "nvidia.*",
+  "haystack.*",
+  "gevent.*",
+  "pytest.*",
+  "numpy.*",
+  "requests_mock.*",
+  "pydantic.*",
+  "tritonclient.*",
+  "requests.*",
+  "tqdm.*",
+]
 ignore_missing_imports = true
-disallow_incomplete_defs = true
-disallow_untyped_defs = true

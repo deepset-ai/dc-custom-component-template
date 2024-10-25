@@ -1,0 +1,41 @@
+name: Build and Push Custom Component
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+
+    - name: Install dependencies
+      run: |
+        pip install hatch
+
+    - name: Set version
+      run: |
+        VERSION=${GITHUB_REF#refs/tags/v}
+        hatch version $VERSION
+    
+    - name: Check repository
+      id: check_repo
+      run: |
+        if [ "${{ github.repository }}" = "deepset-ai/deepset-cloud-custom-nodes" ]; then
+          echo "skip_build=true" >> $GITHUB_OUTPUT
+        else
+          echo "skip_build=false" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Build and push
+      if: steps.check_repo.outputs.skip_build == 'false'
+      env:
+        API_KEY: ${{ secrets.DEEPSET_CLOUD_API_KEY }} # Make sure to add this secret to your repository
+      run: hatch run dc:build-and-push

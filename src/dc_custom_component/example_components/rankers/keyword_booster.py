@@ -59,6 +59,9 @@ class SecretKeywordBooster:
         self,
         magic_word: Secret = Secret.from_env_var("MAGIC_WORD"),
     ):
+        """
+        :param magic_word: A secret keyword to boost documents containing it.
+        """
         self.magic_word = magic_word
 
     @component.output_types(documents=List[Document])

@@ -44,7 +44,7 @@ detached = true
 [tool.hatch.envs.dc.scripts]
 build = "mkdir -p dist && zip -r dist/custom_component.zip ./* -x 'dist/*' '**/__pycache__/*'"
 push = "curl --request POST --url https://api.cloud.deepset.ai/api/v2/custom_components --header 'accept: application/json' --header \"Authorization: Bearer $API_KEY\" --form 'file=@dist/custom_component.zip;type=application/zip'"
-build-and-push = "mkdir -p dist && zip -r dist/custom_component.zip ./* -x 'dist/*' '**/__pycache__/*' && curl --request POST --url https://api.cloud.deepset.ai/api/v2/custom_components --header 'accept: application/json' --header \"Authorization: Bearer $API_KEY\" --form 'file=@dist/custom_component.zip;type=application/zip'"
+build-and-push = "hatch run code-quality:all && mkdir -p dist && zip -r dist/custom_component.zip ./* -x 'dist/*' '**/__pycache__/*' && curl --request POST --url https://api.cloud.deepset.ai/api/v2/custom_components --header 'accept: application/json' --header \"Authorization: Bearer $API_KEY\" --form 'file=@dist/custom_component.zip;type=application/zip'"
 list = "curl --request GET --url https://api.cloud.deepset.ai/api/v2/custom_components --header 'accept: application/json' --header \"Authorization: Bearer $API_KEY\""
 build-windows = "powershell -Command \"& {{ if (-Not (Test-Path dist)) {{mkdir dist}}; if (Test-Path dist/custom_component.zip) {{ Remove-Item dist/custom_component.zip }}; Get-ChildItem -Path . | Where-Object {{ $_.FullName -notlike '*\\dist*' }} | Compress-Archive -DestinationPath dist/custom_component.zip -Update }}"
 push-windows = "curl --request POST --url https://api.cloud.deepset.ai/api/v2/custom_components --header \"accept: application/json\" --header \"Authorization: Bearer %API_KEY%\" --form \"file=@dist/custom_component.zip;type=application/zip\""
@@ -63,6 +63,13 @@ dependencies = [
 packages = ["src/dc_custom_component"]
 
 [tool.hatch.envs.code-quality.scripts]
+format = "black src tests --check"
+format-fix = "black src tests"
+lint = "ruff check . --output-format=github"
+lint-ci = "ruff check . --output-format=github"
+lint-fix = "ruff check .  --fix --output-format=github"
+hooks = "pre-commit install"
+docstrings = "pydocstyle src"
 all = "mypy src tests && black src tests && ruff check --fix ."
 
 [tool.mypy]

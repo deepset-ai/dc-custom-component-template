@@ -1,4 +1,4 @@
-# dc-custom-component-template
+# Deepset Cloud Custom Component Template
 
 This repository contains a template for creating custom components for your deepset Cloud pipelines. Components are Python code snippets that perform specific tasks within your pipeline. This template will guide you through all the necessary elements your custom component must include.
 This template contains two sample components which are ready to be used: 
@@ -96,3 +96,15 @@ It's crucial to thoroughly test your custom component before uploading it to dee
    This creates a zip file called `custom_component.zip` in the `dist` directory and uploads it to deepset Cloud.
 
 For detailed instructions, refer to our documentation on [Creating a Custom Component](https://docs.cloud.deepset.ai/docs/create-a-custom-component).
+
+### GitHub Actions
+
+We use GitHub Actions to build and push custom components to deepset Cloud. Create a tag to trigger the build and push job.
+After forking or cloning this repository:
+
+1. Add the `DEEPSET_CLOUD_API_KEY` [secret to your repository](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions). This is your deepset Cloud API key.
+(To add a secret, go to your repository and choose _Settings > Secrets and variables > Actions > New repository secret_.)
+2. (Optional) Adjust the workflow file in `.github/workflows/publish_on_tag.yaml` as needed.
+3. Create a tag to trigger the GitHub Actions workflow. The workflow builds and pushes the custom component to deepset Cloud with the tag as version.
+
+> **Warning:** When using this GitHub Actions workflow, the version specified in the `__about__` file will be overwritten by the tag value. Make sure your tag matches the desired version number. 

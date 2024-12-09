@@ -99,12 +99,12 @@ For detailed instructions, refer to our documentation on [Creating a Custom Comp
 
 ### GitHub Actions
 
-We use GitHub Actions to build and push the custom component to deepset Cloud. When you create a tag, the build and push job will be triggered.
-After forking/cloning this repository, you need to 
+We use GitHub Actions to build and push custom components to deepset Cloud. Create a tag to trigger the build and push job.
+After forking or cloning this repository:
 
-1. add the following [secrets to your repository](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions):
-   - `DEEPSET_CLOUD_API_KEY`: Your deepset Cloud API key (repo > settings > secrets and variables > actions > new repository secret)
-2. (Optional) adjust the workflow file to your needs in `.github/workflows/publish_on_tag.yaml`
-3. When creating a tag, the workflow will build and push the custom component to deepset Cloud with the tag as version.
+1. Add the `DEEPSET_CLOUD_API_KEY` [secret to your repository](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions). This is your deepset Cloud API key.
+(To add a secret, go to your repository and choose _Settings > Secrets and variables > Actions > New repository secret_.)
+2. (Optional) Adjust the workflow file in `.github/workflows/publish_on_tag.yaml` as needed.
+3. Create a tag to trigger the GitHub Actions workflow. The workflow builds and pushes the custom component to deepset Cloud with the tag as version.
 
-> **Warning:** When using this GitHub Actions workflow, the version specified in the `__about__` file will be overwritten by the tag value. Make sure to use appropriate tag values that correspond to your desired version numbers.
+> **Warning:** When using this GitHub Actions workflow, the version specified in the `__about__` file will be overwritten by the tag value. Make sure your tag matches the desired version number. 

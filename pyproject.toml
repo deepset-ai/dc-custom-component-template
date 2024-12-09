@@ -65,9 +65,9 @@ packages = ["src/dc_custom_component"]
 [tool.hatch.envs.code-quality.scripts]
 format = "black src tests --check"
 format-fix = "black src tests"
-lint = "ruff ."
-lint-ci = "ruff check ."
-lint-fix = "ruff --fix ."
+lint = "ruff check . --output-format=github"
+lint-ci = "ruff check . --output-format=github"
+lint-fix = "ruff check .  --fix --output-format=github"
 hooks = "pre-commit install"
 docstrings = "pydocstyle src"
 all = "mypy src tests && black src tests && ruff check --fix ."

@@ -63,6 +63,13 @@ dependencies = [
 packages = ["src/dc_custom_component"]
 
 [tool.hatch.envs.code-quality.scripts]
+format = "black src tests --check"
+format-fix = "black src tests"
+lint = "ruff ."
+lint-ci = "ruff --format=github ."
+lint-fix = "ruff --fix ."
+hooks = "pre-commit install"
+docstrings = "pydocstyle src"
 all = "mypy src tests && black src tests && ruff check --fix ."
 
 [tool.mypy]

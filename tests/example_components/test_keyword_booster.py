@@ -86,7 +86,6 @@ class TestSecretKeywordBooster:
         assert deserialized.magic_word == Secret.from_env_var("MY_ENV_VAR")
 
     def test_serialization_from_dict(self) -> None:
-
         deserialized: SecretKeywordBooster = SecretKeywordBooster.from_dict(
             {
                 "type": "dc_custom_component.example_components.rankers.keyword_booster.SecretKeywordBooster",

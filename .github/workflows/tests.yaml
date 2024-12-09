@@ -41,5 +41,11 @@ jobs:
     - name: Install Hatch
       run: pip install hatch
         
-    - name: Run code quality checks
-      run: hatch run code-quality:all
+    - name: Run mypy
+      run: hatch run code-quality:mypy src tests
+        
+    - name: Run black
+      run: hatch run code-quality:format
+        
+    - name: Run ruff
+      run: hatch run code-quality:lint-ci

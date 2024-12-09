@@ -1,4 +1,3 @@
-import pytest
 from haystack import Document
 from dc_custom_component.example_components.rankers.keyword_booster import (
     KeywordBooster,

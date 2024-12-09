@@ -66,7 +66,7 @@ packages = ["src/dc_custom_component"]
 format = "black src tests --check"
 format-fix = "black src tests"
 lint = "ruff ."
-lint-ci = "ruff --format=github ."
+lint-ci = "ruff -- --format=github ."
 lint-fix = "ruff --fix ."
 hooks = "pre-commit install"
 docstrings = "pydocstyle src"

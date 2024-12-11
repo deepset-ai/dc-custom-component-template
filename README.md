@@ -103,10 +103,13 @@ After forking or cloning this repository:
 
 1. Add the `DEEPSET_CLOUD_API_KEY` [secret to your repository](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions). This is your deepset Cloud API key.
 (To add a secret, go to your repository and choose _Settings > Secrets and variables > Actions > New repository secret_.)
-2. (Optional) Adjust the workflow file in `.github/workflows/publish_on_tag.yaml` as needed.
-3. Create a new release with a tag to trigger the GitHub Actions workflow. The workflow builds and pushes the custom component to deepset Cloud with the tag as version. For help, see [GitHub documentation](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository).
+2. Enable workflows for your repository by going to _Actions > Enable workflows_.
+3. (Optional) Adjust the workflow file in `.github/workflows/publish_on_tag.yaml` as needed.
+4. Create a new release with a tag to trigger the GitHub Actions workflow. The workflow builds and pushes the custom component to deepset Cloud with the tag as version. For help, see [GitHub documentation](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository).
 
 > **Warning:** When using this GitHub Actions workflow, the version specified in the `__about__` file will be overwritten by the tag value. Make sure your tag matches the desired version number. 
+
+You can check the upload status in the `Actions` tab of your forked repository. 
 
 ### Uploading a Zipped Repository with Commands
 

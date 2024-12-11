@@ -98,7 +98,7 @@ You can upload in one of two ways:
 
 ### Uploading by Releasing Your Forked Directory
 
-We use GitHub Actions to build and push custom components to deepset Cloud. Create a tag to trigger the build and the push job.
+We use GitHub Actions to build and push custom components to deepset Cloud. The action runs the tests and code quality checks before pushing the component code to deepset Cloud. Create a tag to trigger the build and the push job.
 After forking or cloning this repository:
 
 1. Add the `DEEPSET_CLOUD_API_KEY` [secret to your repository](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions). This is your deepset Cloud API key.

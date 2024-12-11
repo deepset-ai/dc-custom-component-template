@@ -97,6 +97,15 @@ It's crucial to thoroughly test your custom component before uploading it to dee
 
 For detailed instructions, refer to our documentation on [Creating a Custom Component](https://docs.cloud.deepset.ai/docs/create-a-custom-component).
 
+## 4. Debugging
+
+To debug the installation of custom components in deepset Cloud, you can run:
+
+- On Linux and macOS: `hatch run dc:logs` 
+- On Windows: `hatch run dc:logs-windows`
+
+This will print the installation logs of the latest version of your custom components.
+
 ### GitHub Actions
 
 We use GitHub Actions to build and push custom components to deepset Cloud. Create a tag to trigger the build and push job.

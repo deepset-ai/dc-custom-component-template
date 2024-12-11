@@ -101,11 +101,12 @@ You can upload in one of two ways:
 We use GitHub Actions to build and push custom components to deepset Cloud. The action runs the tests and code quality checks before pushing the component code to deepset Cloud. Create a tag to trigger the build and the push job.
 After forking or cloning this repository:
 
-1. Add the `DEEPSET_CLOUD_API_KEY` [secret to your repository](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions). This is your deepset Cloud API key.
+1. Push all your changes to the forked repository.
+2. Add the `DEEPSET_CLOUD_API_KEY` [secret to your repository](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions). This is your deepset Cloud API key.
 (To add a secret, go to your repository and choose _Settings > Secrets and variables > Actions > New repository secret_.)
-2. Enable workflows for your repository by going to _Actions > Enable workflows_.
-3. (Optional) Adjust the workflow file in `.github/workflows/publish_on_tag.yaml` as needed.
-4. Create a new release with a tag to trigger the GitHub Actions workflow. The workflow builds and pushes the custom component to deepset Cloud with the tag as version. For help, see [GitHub documentation](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository).
+3. Enable workflows for your repository by going to _Actions > Enable workflows_.
+4. (Optional) Adjust the workflow file in `.github/workflows/publish_on_tag.yaml` as needed.
+5. Create a new release with a tag to trigger the GitHub Actions workflow. The workflow builds and pushes the custom component to deepset Cloud with the tag as version. For help, see [GitHub documentation](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository).
 
 > **Warning:** When using this GitHub Actions workflow, the version specified in the `__about__` file will be overwritten by the tag value. Make sure your tag matches the desired version number. 
 

@@ -1,4 +1,4 @@
-# Deepset Cloud Custom Component Template
+# deepset Cloud Custom Component Template
 
 This repository contains a template for creating custom components for your deepset Cloud pipelines. Components are Python code snippets that perform specific tasks within your pipeline. This template will guide you through all the necessary elements your custom component must include.
 This template contains two sample components which are ready to be used: 
@@ -21,7 +21,7 @@ See also our tutorial for [creating a custom RegexBooster component](https://doc
 - Python v3.10 or v3.11
 - `hatch` package manager
 
-### Hatch: A Python Package Manager
+### Hatch: A Python package manager
 
 We use `hatch` to manage our Python packages. Install it with pip:
 
@@ -68,7 +68,7 @@ components:
   ...
     
 ```
-### Working on Your Component
+### Working on your component
 
 1. Fork this repository.
 2. Navigate to the `/src/dc_custom_component/components/` folder.
@@ -96,9 +96,10 @@ You can upload in one of two ways:
 - By releasing your forked directory.
 - By zipping the forked repository and uploading it with commands.
 
-### Uploading by Releasing Your Forked Repository
+### Uploading by releasing your forked repository
 
-We use GitHub Actions to build and push custom components to deepset Cloud. The action runs the tests and code quality checks before pushing the component code to deepset Cloud. Create a tag to trigger the build and the push job.
+We use GitHub Actions to build and push custom components to deepset Cloud. The action runs the tests and code quality checks before pushing the component code to deepset Cloud. Create a tag to trigger the build and the push job. This method helps you keep track of the changes and investigate the code deployed to deepset Cloud.
+
 After forking or cloning this repository:
 
 1. Push all your changes to the forked repository.
@@ -112,7 +113,7 @@ After forking or cloning this repository:
 
 You can check the upload status in the `Actions` tab of your forked repository. 
 
-### Uploading a Zipped Repository with Commands
+### Uploading a zipped repository with commands
 
 In this method, you run commands to zip and push the repository to deepset Cloud.
 

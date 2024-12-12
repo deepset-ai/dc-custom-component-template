@@ -96,7 +96,7 @@ You can upload in one of two ways:
 - By releasing your forked directory.
 - By zipping the forked repository and uploading it with commands.
 
-### Uploading by Releasing Your Forked Directory
+### Uploading by Releasing Your Forked Repository
 
 We use GitHub Actions to build and push custom components to deepset Cloud. The action runs the tests and code quality checks before pushing the component code to deepset Cloud. Create a tag to trigger the build and the push job.
 After forking or cloning this repository:

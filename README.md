@@ -125,8 +125,11 @@ In this method, you run commands to zip and push the repository to deepset Cloud
    - On Windows: `hatch run dc:build-windows` and `hatch run dc:push-windows`
    This creates a ZIP file called `custom_component.zip` in the `dist` directory and uploads it to deepset Cloud.
 
+## 4. Debugging
 
+To debug the installation of custom components in deepset Cloud, you can run:
 
+- On Linux and macOS: `hatch run dc:logs` 
+- On Windows: `hatch run dc:logs-windows`
 
-
-
+This will print the installation logs of the latest version of your custom components.

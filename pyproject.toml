@@ -43,14 +43,23 @@ detached = true
 
 [tool.hatch.envs.dc.scripts]
 build = "mkdir -p dist && zip -r dist/custom_component.zip ./* -x 'dist/*' '**/__pycache__/*'"
-push = "curl --request POST --url https://api.cloud.deepset.ai/api/v2/custom_components --header 'accept: application/json' --header \"Authorization: Bearer $API_KEY\" --form 'file=@dist/custom_component.zip;type=application/zip'"
-build-and-push = "hatch run code-quality:all && mkdir -p dist && zip -r dist/custom_component.zip ./* -x 'dist/*' '**/__pycache__/*' && curl --request POST --url https://api.cloud.deepset.ai/api/v2/custom_components --header 'accept: application/json' --header \"Authorization: Bearer $API_KEY\" --form 'file=@dist/custom_component.zip;type=application/zip'"
-list = "curl --request GET --url https://api.cloud.deepset.ai/api/v2/custom_components --header 'accept: application/json' --header \"Authorization: Bearer $API_KEY\""
-build-windows = "powershell -Command \"& {{ if (-Not (Test-Path dist)) {{mkdir dist}}; if (Test-Path dist/custom_component.zip) {{ Remove-Item dist/custom_component.zip }}; Get-ChildItem -Path . | Where-Object {{ $_.FullName -notlike '*\\dist*' }} | Compress-Archive -DestinationPath dist/custom_component.zip -Update }}"
-push-windows = "curl --request POST --url https://api.cloud.deepset.ai/api/v2/custom_components --header \"accept: application/json\" --header \"Authorization: Bearer %API_KEY%\" --form \"file=@dist/custom_component.zip;type=application/zip\""
-list-windows = "curl --request GET --url https://api.cloud.deepset.ai/api/v2/custom_components --header \"accept: application/json\" --header \"Authorization: Bearer %API_KEY%\""
-logs = "curl --request GET --url https://api.cloud.deepset.ai/api/v2/custom_components/logs --header 'accept: text/plain' --header \"Authorization: Bearer $API_KEY\""
-logs-windows = "curl --request GET --url https://api.cloud.deepset.ai/api/v2/custom_components/logs --header \"accept: text/plain\" --header \"Authorization: Bearer %API_KEY%\""
+push = "curl --request POST --url ${API_URL:-https://api.cloud.deepset.ai}/api/v2/custom_components --header 'accept: application/json' --header \"Authorization: Bearer $API_KEY\" --form 'file=@dist/custom_component.zip;type=application/zip'"
+build-and-push = "hatch run code-quality:all && mkdir -p dist && zip -r dist/custom_component.zip ./* -x 'dist/*' '**/__pycache__/*' && curl --request POST --url ${API_URL:-https://api.cloud.deepset.ai}/api/v2/custom_components --header 'accept: application/json' --header \"Authorization: Bearer $API_KEY\" --form 'file=@dist/custom_component.zip;type=application/zip'"
+list = "curl --request GET --url ${API_URL:-https://api.cloud.deepset.ai}/api/v2/custom_components --header 'accept: application/json' --header \"Authorization: Bearer $API_KEY\""
+build-windows = "powershell -Command \"& {{ if (-Not (Test-Path dist)) {{mkdir dist}}; if (Test-Path dist/custom_component.zip) {{ Remove-Item dist/custom_component.zip }}; Get-ChildItem -Path . | Where-Object {{ $_.FullName -notlike '*\\dist*' }} | Compress-Archive -DestinationPath dist/custom_component.zip -Update }}\""
+push-windows = [
+  'IF "%API_URL%"=="" (SET "_api_url=https://api.cloud.deepset.ai") ELSE (SET "_api_url=%API_URL%")',
+  "curl --request POST --url %_api_url%/api/v2/custom_components --header \"accept: application/json\" --header \"Authorization: Bearer %API_KEY%\" --form \"file=@dist/custom_component.zip;type=application/zip\""
+]
+list-windows = [
+  'IF "%API_URL%"=="" (SET "_api_url=https://api.cloud.deepset.ai") ELSE (SET "_api_url=%API_URL%")',
+  "curl --request GET --url %_api_url%/api/v2/custom_components --header \"accept: application/json\" --header \"Authorization: Bearer %API_KEY%\""
+]
+logs = "curl --request GET --url ${API_URL:-https://api.cloud.deepset.ai}/api/v2/custom_components/logs --header 'accept: text/plain' --header \"Authorization: Bearer $API_KEY\""
+logs-windows = [
+  'IF "%API_URL%"=="" (SET "_api_url=https://api.cloud.deepset.ai") ELSE (SET "_api_url=%API_URL%")',
+  "curl --request GET --url %_api_url%/api/v2/custom_components/logs --header \"accept: text/plain\" --header \"Authorization: Bearer %API_KEY%\""
+]
 
 [tool.hatch.envs.code-quality]
 python = "3.11"

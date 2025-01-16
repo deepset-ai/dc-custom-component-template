@@ -107,7 +107,8 @@ After forking or cloning this repository:
 (To add a secret, go to your repository and choose _Settings > Secrets and variables > Actions > New repository secret_.)
 3. Enable workflows for your repository by going to _Actions > Enable workflows_.
 4. (Optional) Adjust the workflow file in `.github/workflows/publish_on_tag.yaml` as needed.
-5. Create a new release with a tag to trigger the GitHub Actions workflow. The workflow builds and pushes the custom component to deepset Cloud with the tag as version. For help, see [GitHub documentation](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository).
+5. (Optional) If you're not using the European deepset Cloud tenant, change the `API_URL` variable in `.github/workflows/publish_on_tag.yaml`
+6. Create a new release with a tag to trigger the GitHub Actions workflow. The workflow builds and pushes the custom component to deepset Cloud with the tag as version. For help, see [GitHub documentation](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository).
 
 > **Warning:** When using this GitHub Actions workflow, the version specified in the `__about__` file will be overwritten by the tag value. Make sure your tag matches the desired version number. 
 
@@ -116,11 +117,17 @@ You can check the upload status in the `Actions` tab of your forked repository.
 ### Uploading a zipped repository with commands
 
 In this method, you run commands to zip and push the repository to deepset Cloud.
-
-1. Set your [deepset Cloud API key](https://docs.cloud.deepset.ai/docs/generate-api-key).
+1. (Optional) If you're not using the European tenant, set the API URL:
+  - deepset Cloud Europe:
+    - On Linux and macOS: `export API_URL="https://api.cloud.deepset.ai"`
+    - On Windows: `set API_URL=https://api.cloud.deepset.ai`
+  - deepset Cloud US:
+    - On Linux and macOS: `export API_URL="https://api.us.deepset.ai"`
+    - On Windows: `set API_URL=https://api.us.deepset.ai`
+2. Set your [deepset Cloud API key](https://docs.cloud.deepset.ai/docs/generate-api-key).
    - On Linux and macOS: `export API_KEY=<TOKEN>`
    - On Windows: `set API_KEY=<TOKEN>`
-2. Upload your project by running the following command from inside of this project:
+3. Upload your project by running the following command from inside of this project:
    - On Linux and macOS: `hatch run dc:build-and-push`
    - On Windows: `hatch run dc:build-windows` and `hatch run dc:push-windows`
    This creates a ZIP file called `custom_component.zip` in the `dist` directory and uploads it to deepset Cloud.

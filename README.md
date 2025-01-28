@@ -50,7 +50,7 @@ For more information on `hatch`, please refer to the [official Hatch documentati
 | File | Description |
 |------|-------------|
 | `/src/dc_custom_component/components` | Directory for implementing custom components. You can logically group custom components in sub-directories. See how sample components are grouped by type. |
-| `/src/dc_custom_component/__about__.py` | Your custom components' version. deepset Cloud always uses the latest version. Bump the version every time you update your component before uploading it to deepset Cloud. |
+| `/src/dc_custom_component/__about__.py` | Your custom components' version. Bump the version every time you update your component before uploading it to deepset Cloud. This is not needed if you are using the GitHub action workflow (in this case the version will be determined by the GitHub release tag). |
 | `/pyproject.toml` | Information about the project. If needed, add your components' dependencies in this file in the `dependencies` section. |
 
 The directory where your custom component is stored determines the name of the component group in Pipeline Builder. For example, the `CharacterSplitter` component would appear in the `Preprocessors` group, while the `KeywordBooster` component would be listed in the `Rankers` group. You can drag these components onto the canvas to use them.
@@ -74,6 +74,9 @@ components:
 2. Navigate to the `/src/dc_custom_component/components/` folder.
 3. Add your custom components following the examples.
 4. Update the components' version in `/src/__about__.py`.
+
+   [!NOTE]
+   This is not needed if you are using the GitHub action workflow (in this case the version will be determined by the GitHub release tag).
 5. Format your code using the `hatch run code-quality:all` command. (Note that hatch commands work from the project root directory only.)
 
 ### Formatting
@@ -109,8 +112,10 @@ After forking or cloning this repository:
 4. (Optional) Adjust the workflow file in `.github/workflows/publish_on_tag.yaml` as needed.
 5. (Optional) If you're not using the European deepset Cloud tenant, change the `API_URL` variable in `.github/workflows/publish_on_tag.yaml`
 6. Create a new release with a tag to trigger the GitHub Actions workflow. The workflow builds and pushes the custom component to deepset Cloud with the tag as version. For help, see [GitHub documentation](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository).
+  
+   > **Warning:** When using this GitHub Actions workflow, the version specified in the `__about__` file will be overwritten by the tag value. Make sure your tag matches the desired version number. 
 
-> **Warning:** When using this GitHub Actions workflow, the version specified in the `__about__` file will be overwritten by the tag value. Make sure your tag matches the desired version number. 
+
 
 You can check the upload status in the `Actions` tab of your forked repository. 
 

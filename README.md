@@ -75,8 +75,8 @@ components:
 3. Add your custom components following the examples.
 4. Update the components' version in `/src/__about__.py`.
 
-   [!NOTE]
-   This is not needed if you are using the GitHub action workflow (in this case the version will be determined by the GitHub release tag).
+   > [!NOTE]
+   > This is not needed if you are using the GitHub action workflow (in this case the version will be determined by the GitHub release tag).
 5. Format your code using the `hatch run code-quality:all` command. (Note that hatch commands work from the project root directory only.)
 
 ### Formatting

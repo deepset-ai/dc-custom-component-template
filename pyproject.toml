@@ -6,21 +6,20 @@ build-backend = "hatchling.build"
 name = "dc-custom-component"
 description = 'Custom Haystack component to be used with deepset Cloud'
 readme = "README.md"
-requires-python = ">=3.10,<3.13" # deepset cloud at the moment uses 3.10
+requires-python = ">=3.12" # deepset cloud at the moment uses 3.12
 license = "MIT"
 keywords = []
 authors = [{ name = "deepset", email = "platform-engineering-exploration@deepset.de" }]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Programming Language :: Python",
-  "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
 dependencies = [
-  "haystack-ai>=2.0.0"
+  "haystack-ai>=2.10.0"
 ]
 dynamic = ["version"]
 
@@ -28,7 +27,7 @@ dynamic = ["version"]
 path = "src/dc_custom_component/__about__.py"
 
 [[tool.hatch.envs.all.matrix]]
-python = ["3.10", "3.11"]
+python = ["3.12", "3.13"]
 
 [tool.hatch.envs.default]
 dependencies = [
@@ -63,7 +62,7 @@ logs-windows = [
 ]
 
 [tool.hatch.envs.code-quality]
-python = "3.11"
+python = "3.12"
 detached = true
 dependencies = [
   "black==23.9.1",
@@ -85,7 +84,7 @@ docstrings = "pydocstyle src"
 all = "mypy src tests && black src tests && ruff check --fix ."
 
 [tool.mypy]
-python_version = "3.11"
+python_version = "3.12"
 warn_return_any = true
 warn_unused_configs = true
 ignore_missing_imports = true

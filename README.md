@@ -18,7 +18,7 @@ See also our tutorial for [creating a custom RegexBooster component](https://doc
 
 ### Prerequisites
 
-- Python v3.10 or v3.11
+- Python v3.12 or v3.13
 - `hatch` package manager
 
 ### Hatch: A Python package manager

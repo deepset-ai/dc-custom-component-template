@@ -1,6 +1,6 @@
-# deepset AI Platform Custom Component Template
+# Haystack Enterprise Platform Custom Component Template
 
-This repository contains a template for creating custom components for your deepset pipelines. Components are Python code snippets that perform specific tasks within your pipeline. This template will guide you through all the necessary elements your custom component must include.
+This repository contains a template for creating custom components for your Haystack pipelines. Components are Python code snippets that perform specific tasks within your pipeline. This template will guide you through all the necessary elements your custom component must include.
 This template contains two sample components which are ready to be used: 
   - `CharacterSplitter` implemented in `/src/dc_custom_component/example_components/preprocessors/character_splitter.py`: A component that splits documents into smaller chunks by the number of characters you set. You can use it in indexing pipelines.
   - `KeywordBooster` implemented in `/src/dc_custom_component/example_components/rankers/keyword_booster.py`: A component that boosts the score of documents that contain specific keywords. You can use it in query pipelines.
